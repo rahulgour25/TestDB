@@ -4,17 +4,21 @@ CREATE TABLE mst_skills
 	skill_name		varchar(100)
 );
 
+CREATE SEQUENCE mst_skills_skill_id_seq
+  START WITH 1
+  INCREMENT BY 1;
+
 TRUNCATE TABLE mst_skills;
 
 insert into mst_skills
 VALUES
-(1, 'Internal Medicine'),
-(2, 'Pediatrics'),
-(3, 'Cardiology'),
-(4, 'Obstetrics and Gynecology'),
-(5, 'Neurosurgery'),
-(6, 'Orthopedics'),
-(7, 'Ophthalmologists');
+(NEXT VALUE FOR mst_skills_skill_id_seq, 'Internal Medicine'),
+(NEXT VALUE FOR mst_skills_skill_id_seq, 'Pediatrics'),
+(NEXT VALUE FOR mst_skills_skill_id_seq, 'Cardiology'),
+(NEXT VALUE FOR mst_skills_skill_id_seq, 'Obstetrics and Gynecology'),
+(NEXT VALUE FOR mst_skills_skill_id_seq, 'Neurosurgery'),
+(NEXT VALUE FOR mst_skills_skill_id_seq, 'Orthopedics'),
+(NEXT VALUE FOR mst_skills_skill_id_seq, 'Ophthalmologists');
 
 
 
@@ -24,19 +28,25 @@ CREATE TABLE mst_doctors_degrees
 	degree_name		varchar(100)
 );
 
+CREATE SEQUENCE mst_doctors_degrees_id_seq
+  START WITH 1
+  INCREMENT BY 1;
+
 TRUNCATE TABLE mst_doctors_degrees;
 
 
 insert into mst_doctors_degrees
 VALUES
-(1,'MBBS – Bachelor of Medicine, Bachelor of Surgery.'),
-(2,'BDS – Bachelor of Dental Surgery.'),
-(3,'BAMS – Bachelor of Ayurvedic Medicine and Surgery.'),
-(4,'BUMS – Bachelor of Unani Medicine and Surgery.'),
-(5,'BHMS – Bachelor of Homeopathy Medicine and Surgery.'),
-(6,'BYNS- Bachelor of Yoga and Naturopathy Sciences.');
+(NEXT VALUE FOR mst_doctors_degrees_id_seq,'MBBS – Bachelor of Medicine, Bachelor of Surgery.'),
+(NEXT VALUE FOR mst_doctors_degrees_id_seq,'BDS – Bachelor of Dental Surgery.'),
+(NEXT VALUE FOR mst_doctors_degrees_id_seq,'BAMS – Bachelor of Ayurvedic Medicine and Surgery.'),
+(NEXT VALUE FOR mst_doctors_degrees_id_seq,'BUMS – Bachelor of Unani Medicine and Surgery.'),
+(NEXT VALUE FOR mst_doctors_degrees_id_seq,'BHMS – Bachelor of Homeopathy Medicine and Surgery.'),
+(NEXT VALUE FOR mst_doctors_degrees_id_seq,'BYNS- Bachelor of Yoga and Naturopathy Sciences.');
 
 --DROP TABLE mst_hospitals
+
+
 
 CREATE TABLE mst_hospitals
 (
@@ -46,13 +56,17 @@ CREATE TABLE mst_hospitals
 	pincode			int
 );
 
+CREATE SEQUENCE mst_hospitals_id_seq
+  START WITH 1
+  INCREMENT BY 1;
+
 TRUNCATE TABLE mst_hospitals;
 
 insert into mst_hospitals
 VALUES
-(1,'W Pratiksha Sector 56','Sector 56 Gurgaon',122001 ),
-(2,'Artimis','Sector 52', 122002 ),
-(3,'Medanta','Sector 38', 122003);
+(NEXT VALUE FOR mst_hospitals_id_seq,'W Pratiksha Sector 56','Sector 56 Gurgaon',122001 ),
+(NEXT VALUE FOR mst_hospitals_id_seq,'Artimis','Sector 52', 122002 ),
+(NEXT VALUE FOR mst_hospitals_id_seq,'Medanta','Sector 38', 122003);
 --DROP TABLE mst_doctor_skills;
 
 CREATE TABLE mst_doctor_skills
@@ -103,3 +117,33 @@ CREATE TABLE mst_doctor_profile
 INSERT INTO mst_doctor_profile
 VALUES
 (10,1,2,' immune system disorders such as asthma, eczema, food allergies',12,null,1,GETDATE(),'Rahul');
+
+--DROP TABLE txn_import_doctor_profile
+
+CREATE TABLE txn_import_doctor_profile
+(
+	first_name		varchar(100),
+	last_name		varchar(100),
+	email			varchar(100),
+	contactno		varchar(100),
+	highest_degree  varchar(100),
+	speciality			varchar(1000),
+	experience		int,
+	area_of_experties varchar(8000),
+	hospital_name	varchar(1000),
+	hospital_address varchar(1000),
+	user_id			 bigint,
+	hospital_id		 int,
+	skill_id		 int,
+	highest_degree_id int,	
+	error_reason	 text,
+	is_processed	 tinyint default 0
+);
+
+CREATE TABLE txn_log
+(
+log_id			bigint,
+error_source	varchar(100),
+error			text, 
+log_date	datetime2
+);
