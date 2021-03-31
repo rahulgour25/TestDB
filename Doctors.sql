@@ -1,4 +1,4 @@
----Table structures 
+---Table structure
 
 CREATE TABLE mst_skills
 (
