@@ -5,7 +5,7 @@ ALTER  PROCEDURE set_users
 	@pi_hash_password			varchar(100),
 	@pi_first_name				varchar(100),
 	@pi_middle_name				varchar(100),
-	@pi_last_name				varchar(100),
+	@pi_last_name				varchar(100),  --last name
 	@pi_email_id				varchar(100),
 	@pi_contactno				varchar(100),	
 	@pi_city					varchar(100),
