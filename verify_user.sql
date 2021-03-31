@@ -1,6 +1,6 @@
 CREATE PROCEDURE verify_user
 (
-	@pi_username varchar(100)
+	@pi_username varchar(100) 
 )
 AS
 /***************************************************************************
