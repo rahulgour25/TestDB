@@ -1,5 +1,5 @@
 CREATE TABLE send_otp_log
-(
+( 
 Id				bigint,
 user_id			bigint,
 mobile			varchar(30), 
