@@ -40,7 +40,8 @@ EXEC set_users
 SELECT * FROM mst_users 
 SELECT * FROm send_otp_log
 SELECT * FROm RND
-DELETE FROM mst_users WHERE first_name is null
+SELECT * FROM FROM mst_users WHERE first_name is null
+
 ***************************************************************************************/
 
 DECLARE 
