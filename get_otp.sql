@@ -8,7 +8,7 @@ CREATED BY : RAHUL GOUR
 CREATED ON : 16th APR  2020
 PURPOSE	   : To store OTP details
 TEST SCRIPT
-DECLARE @po1 tinyint, @po2 varchar(100);
+DECLARE @po1 tinyint, @po varchar(100);
 EXEC get_otp
    @pi_user_id = 10
 	print @po1 ;
