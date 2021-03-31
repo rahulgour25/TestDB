@@ -1,3 +1,5 @@
+---Table structures 
+
 CREATE TABLE mst_skills
 (
 	skill_id		int,
